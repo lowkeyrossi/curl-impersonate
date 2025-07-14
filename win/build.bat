@@ -60,6 +60,7 @@ if "%DISABLE_ASM_ARM64%"=="true" (
 ) else (
   cmake %cmake_common_args% -DCMAKE_POSITION_INDEPENDENT_CODE=ON -S . -B "%build%\boringssl"
 )
+cmake --build "%build%\boringssl" --config %configuration% --target install
 popd
 
 :: Build & Install ngtcp2
