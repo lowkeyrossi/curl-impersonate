@@ -54,6 +54,14 @@ jobs:
         shell: cmd
         run: choco install nasm -y
 
+      - name: Install Ninja for Win-ARM64
+        shell: pwsh
+        if: matrix.os == 'windows-11-arm'
+        run: |
+          Invoke-WebRequest https://github.com/ninja-build/ninja/releases/download/v1.13.1/ninja-winarm64.zip -OutFile ninja-winarm64.zip
+          Expand-Archive ninja-winarm64.zip -DestinationPath ninja
+          Copy-Item ninja\ninja.exe -Destination "C:\Windows\System32"
+
       - name: Fetch and patch deps
         shell: bash
         run: ./win/deps.sh
