@@ -72,6 +72,8 @@ jobs:
       - name: Build
         shell: cmd
         run: ./win/build.bat ${{ matrix.sys }}
+        env:
+          DISABLE_ASM_ARM64: ${{ matrix.env == 'arm64' && 'true' || 'false' }}
 
       - name: Build tarball
         shell: bash
