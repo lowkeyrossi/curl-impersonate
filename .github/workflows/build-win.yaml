@@ -2,7 +2,7 @@ name: Build for windows
 on:
   push:
     branches:
-      - main
+      - woa
       - feature/*
       - bugfix/*
     tags:
